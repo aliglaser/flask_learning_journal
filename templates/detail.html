@@ -21,8 +21,8 @@
     </article>
 </div>
 <div class="edit">
-    <p><a href="{{ url_for('edit', id=entry.id) }}">Edit Entry</a></p>
-    <p><a href="{{ url_for('delete', id=entry.id) }}">Delete Entry</a></p>
+    <a class="button" href="{{ url_for('edit', id=entry.id) }}">Edit Entry</a>
+    <a class="button" href="{{ url_for('delete', id=entry.id) }}">Delete Entry</a>
 </div>
     
 {% endblock %}

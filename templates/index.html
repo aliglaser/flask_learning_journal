@@ -3,16 +3,22 @@
 
 {% block content %}
 <div class="entry-list">
-    {% for entry in entries %}
+    {% if entries %}
+        {% for entry in entries %}
+            <article>
+                <h2>
+                    <a href="{{ url_for('detail', id=entry.id ) }}">{{ entry.title }}</a>
+                </h2>    
+                    <time datetime="{{ entry.date.strftime('%Y-%m-%d %H:%M:%S') }}">
+                        {{ entry.date.strftime('%Y-%m-%d %H:%M:%S') }}
+                    </time>
+                
+            </article>
+        {% endfor %}
+    {% else %}
         <article>
-            <h2>
-                <a href="{{ url_for('detail', id=entry.id ) }}">{{ entry.title }}</a>
-            </h2>    
-                <time datetime="{{ entry.date.strftime('%Y-%m-%d %H:%M:%S') }}">
-                    {{ entry.date.strftime('%Y-%m-%d %H:%M:%S') }}
-                </time>
-            
-        </article>
-    {% endfor %}
+            <h2>N O   E N T R Y</h2>
+        </article>     
+    {% endif %}    
 </div>
 {% endblock %}            

@@ -102,14 +102,14 @@ def add():
 	return render_template('new.html', form=form)	
 
 
-@app.route('/detail/<int:id>')
+@app.route('/entries/<int:id>')
 def detail(id=None):
 	entry = models.Journal.select().where(models.Journal.id == id).get()
 	return render_template("detail.html", entry=entry)
 
 
 
-@app.route('/edit/<int:id>', methods=('GET', 'POST'))
+@app.route('/entries/edit/<int:id>', methods=('GET', 'POST'))
 @login_required
 def edit(id=None):
 	entry = models.Journal.select().where(models.Journal.id == id).get()
@@ -126,7 +126,7 @@ def edit(id=None):
 	return render_template('edit.html', form=form, entry=entry)
 
 
-@app.route('/delete/<int:id>')
+@app.route('/entries/delete/<int:id>')
 @login_required
 def delete(id):
 	"""Delete a journal entry."""
